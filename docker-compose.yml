@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+    nginx:
+        build:
+            context: .
+            dockerfile: docker/nginx.dockerfile
+        volumes:
+            - ./:/var/www/importer
+            - ./docker/logs:/var/log/nginx
+        ports:
+            - 8098:80
+        links:
+          - fpm
+    fpm:
+        build:
+            context: .
+            dockerfile: docker/fpm.dockerfile
+        volumes:
+            - ./:/var/www/importer
+        links:
+          - mysql
+    mysql:
+        image: mysql:5.7
+        ports:
+            - 33061:3306
+        volumes:
+            - ./docker/database/data:/var/lib/mysql
+            - ./docker/database/migrations:/docker-entrypoint-initdb.d
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=importer
