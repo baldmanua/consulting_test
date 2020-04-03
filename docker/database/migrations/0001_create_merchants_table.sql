@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS merchants
+(
+    id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    merchant_id BIGINT UNSIGNED NOT NULL,
+    name        VARCHAR(255)    NOT NULL
+) ENGINE = MYISAM;
