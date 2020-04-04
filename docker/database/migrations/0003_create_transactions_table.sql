@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS transactions
     card_number VARCHAR(20) NOT NULL,
     amount      float       NOT NULL,
     batch_id    INT UNSIGNED,
-    PRIMARY KEY ('id'),
+    PRIMARY KEY (id),
     FOREIGN KEY (batch_id) REFERENCES batches (id)
 ) ENGINE = MYISAM
   DEFAULT CHARSET = utf8;

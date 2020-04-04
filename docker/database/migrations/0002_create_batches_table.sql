@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS batches
 (
     id          INT UNSIGNED AUTO_INCREMENT,
-    ref_num     FLOAT(24, 0) NOT NULL,
+    ref_num     DECIMAL(24, 0) UNSIGNED NOT NULL,
     date        DATE         NOT NULL,
     merchant_id BIGINT UNSIGNED,
     PRIMARY KEY (id),
