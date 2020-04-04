@@ -100,7 +100,11 @@ class DB
 
     public function insertTransactions($transactions_array)
     {
-        // @ToDo If too much rows, query can be out of max length. Then it can be splited with array_chunk()
+        /**
+         * @ToDo If too much rows, query can be out of max length.
+         * array_chunk() fixes it, but then we will have too much queries.
+         * needs performance testing
+         */
         $query = 'INSERT INTO transactions (date, type, card_type, card_number, amount, batch_id) VALUES ';
         $first = true;
         foreach ($transactions_array as $transaction) {
